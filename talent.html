@@ -68,12 +68,21 @@
         </div>
 
         <div class="toolbar">
-          <div class="filter-row">
-            <button class="filter-chip is-active" type="button" data-roster-filter="all">All</button>
-            <button class="filter-chip" type="button" data-roster-filter="actors">Actors</button>
-            <button class="filter-chip" type="button" data-roster-filter="djs">DJs</button>
-            <button class="filter-chip" type="button" data-roster-filter="influencers">Influencers</button>
-          </div>
+          <div class="filter-bar">
+  <div class="filter-group">
+    <button class="filter-chip is-active">All</button>
+    <button class="filter-chip">Actors</button>
+    <button class="filter-chip">DJs</button>
+    <button class="filter-chip">Influencers</button>
+  </div>
+
+  <div class="filter-controls">
+    <input type="text" placeholder="Search category, request type, or format">
+    <select>
+      <option>Sort by request lane</option>
+    </select>
+  </div>
+</div>
           <div class="control-row">
             <input id="talentSearch" type="search" placeholder="Search category, request type, or format">
             <select id="talentSort">

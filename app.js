@@ -1,3 +1,4 @@
+
 const KEYS={leads:"trance_leads",analytics:"trance_analytics",talentStatus:"trance_talent_status",admin:"trance_admin_session"};
 const ADMIN_CODE="trance2026";
 const WHATSAPP_NUMBER="919999999999";
@@ -393,3 +394,38 @@ function slugify(value){return String(value||"").toLowerCase().replace(/[^a-z0-9
 function sumValues(object){return Object.values(object||{}).reduce((sum,value)=>sum+value,0);}
 function topKey(object){return Object.keys(object||{}).sort((a,b)=>(object[b]||0)-(object[a]||0))[0];}
 function safe(value){return String(value).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");}
+
+function initRevealAnimations() {
+  const elements = document.querySelectorAll('.reveal');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-revealed');
+      }
+    });
+  }, {
+    threshold: 0.12
+  });
+
+  elements.forEach(el => observer.observe(el));
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  initRevealAnimations();
+});
+
+document.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", function(e) {
+    const href = this.getAttribute("href");
+
+    if (href && !href.startsWith("#") && !href.startsWith("javascript")) {
+      e.preventDefault();
+      document.body.classList.add("is-navigating");
+
+      setTimeout(() => {
+        window.location.href = href;
+      }, 200);
+    }
+  });
+});

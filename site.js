@@ -1,3 +1,4 @@
+
 const STORAGE_KEYS = {
   leads: "trance_leads",
   analytics: "trance_analytics",
@@ -2705,3 +2706,56 @@ function escapeHtml(value) {
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#39;");
 }
+
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('hidden');
+  }, 1500);
+});
+
+
+window.addEventListener('scroll', () => {
+  document.querySelector('.site-header')
+    .classList.toggle('scrolled', window.scrollY > 60);
+});
+
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target);
+  let current = 0;
+  const step = target / 100;
+
+  const interval = setInterval(() => {
+    current += step;
+    el.textContent = Math.floor(current);
+    if (current >= target) clearInterval(interval);
+  }, 20);
+}
+
+const counterObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateCounter(entry.target);
+      counterObs.unobserve(entry.target);
+    }
+  });
+});
+
+document.querySelectorAll('.counter').forEach(el => {
+  counterObs.observe(el);
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const reveals = document.querySelectorAll(".reveal");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
+    });
+  }, {
+    threshold: 0.15
+  });
+
+  reveals.forEach(el => observer.observe(el));
+});
