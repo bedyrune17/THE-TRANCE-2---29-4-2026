@@ -249,3 +249,32 @@ textarea{resize:vertical;min-height:130px}
   .split-head,.talent-footer,.footer-content,.contact-list li,.analytics-list li,.status-card{flex-direction:column;align-items:flex-start}
   .container,.container-wide{width:min(100% - 20px,1180px)}
 }
+
+.home-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 40%, rgba(255,58,120,0.18), transparent 60%);
+  pointer-events: none;
+}
+
+.hero-copy {
+  margin-top: 18px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+.btn {
+  transition: all 0.25s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px) scale(1.02);
+}
+
+.page-section {
+  transition: all 0.4s ease;
+}
+
+
